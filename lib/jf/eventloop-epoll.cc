@@ -71,7 +71,7 @@ void EventLoop_epoll::unwatch_out(
 void EventLoop_epoll::run_one()
 {
     events_.resize(notifiers_.size());
-    int num_ready = ::epoll_wait(epoll_fd_, &events_[0], events_.size(), -1);
+    int num_ready = ::epoll_wait(epoll_fd_, &events_[0], events_.size(), 1);
     assert(num_ready != -1);
 
     for (int i=0; i<num_ready; i++) {
